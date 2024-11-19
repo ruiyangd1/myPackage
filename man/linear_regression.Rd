@@ -2,24 +2,23 @@
 % Please edit documentation in R/linear_regression.R
 \name{linear_regression}
 \alias{linear_regression}
-\title{Linear Regression Model}
+\title{Linear Regression model}
 \usage{
 linear_regression(x, y)
 }
 \arguments{
-\item{x}{Numeric vector (independent variable).}
+\item{x}{A numeric vector (independent variable).}
 
-\item{y}{Numeric vector (dependent variable).}
+\item{y}{A numeric vector (dependent variable).}
 }
 \value{
-An object of class "lm".
+A list containing estimates, variance, standard error, t-statistics, and p-values.
 }
 \description{
-Fits a simple linear regression model.
+This function fits a linear regression model using mathematical operations.
 }
 \examples{
-x <- 1:10
-y <- 1:10 + rnorm(10)
-model <- linear_regression(x, y)
-summary(model)
+x <- c(1, 2, 3, 4, 5)
+y <- c(2, 4, 6, 8, 10) + rnorm(5)
+linear_regression(x, y)
 }

@@ -15,8 +15,44 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
+# Load the package and data
 library(myPackage)
+data(iris)
 
+# Fit the model
+result_single <- linear_regression(x = iris$Sepal.Width, y = iris$Sepal.Length)
+print(result_single)
 ```
+```{r}
+# Fit the model using lm()
+lm_model_single <- lm(Sepal.Length ~ Sepal.Width, data = iris)
+summary(lm_model_single)
 
-check the results.
+# Compare estimates
+all.equal(result_single$estimates, coef(lm_model_single))
+# Compare standard errors
+all.equal(result_single$se, summary(lm_model_single)$coefficients[, 2])
+# Compare t-statistics
+all.equal(result_single$t_stat, summary(lm_model_single)$coefficients[, 3])
+# Compare p-values
+all.equal(result_single$p_val, summary(lm_model_single)$coefficients[, 4])
+```
+returns the same values as using the pre-existing functions--lm().
+```{r}
+library(microbenchmark)
+
+# Benchmark the functions,for profomance
+benchmark_results <- microbenchmark(
+  linear_regression(x = iris$Sepal.Width, y = iris$Sepal.Length),
+  lm(Sepal.Length ~ Sepal.Width, data = iris),
+  times = 100
+)
+
+
+print(benchmark_results)
+```
+our function (linear_regression) is ideal for educational purposes or simple regression tasks with small datasets.
+The built-in lm() function is better suited for larger datasets or cases requiring advanced diagnostics and stability.
+
+
+
