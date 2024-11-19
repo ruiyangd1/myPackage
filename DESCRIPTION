@@ -1,0 +1,15 @@
+Package: myPackage
+Title: A Simple R Package for Linear Regression
+Version: 0.0.0.9000
+Authors@R: 
+    person("Ruiyang", "Dong", , "ruiyangd@umich.edu", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: This package provides a linear regression function for educational purposes.
+License: MIT
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
