@@ -14,5 +14,6 @@
 linear_regression <- function(x, y) {
   model <- lm(y ~ x)
   return(model)
+  # shit
 }
 
